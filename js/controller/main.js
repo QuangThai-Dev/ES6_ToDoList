@@ -8,26 +8,7 @@ const getEle = (id) => document.getElementById(id);
 const xoaForm = () => {
   getEle("newTask").value = "";
 };
-const setLocalTasK = (arrTask) => {
-  localStorage.setItem("TASK", JSON.stringify(arrTask));
-};
-const getLocalTask = () => {
-  if (localStorage.getItem("TASK")) {
-    taskService.arrTask = JSON.parse(localStorage.getItem("TASK"));
-  }
-  renderTask(taskService.arrTask);
-};
-const setLocalTasKComplete = (arrTaskComplete) => {
-  localStorage.setItem("TaskComplete", JSON.stringify(arrTaskComplete));
-};
-const getLocalTaskComplete = () => {
-  if (localStorage.getItem("TaskComplete")) {
-    taskService.arrTaskComplete = JSON.parse(
-      localStorage.getItem("TaskComplete")
-    );
-  }
-  renderTaskComplete(taskService.arrTaskComplete);
-};
+
 const renderTask = (arrTask) => {
   let content = "";
   arrTask.map((item, index) => {
@@ -60,6 +41,26 @@ const renderTaskComplete = (arrTaskComplete) => {
     `;
   });
   getEle("completed").innerHTML = content;
+};
+const setLocalTasK = (arrTask) => {
+  localStorage.setItem("TASK", JSON.stringify(arrTask));
+};
+const getLocalTask = () => {
+  if (localStorage.getItem("TASK")) {
+    taskService.arrTask = JSON.parse(localStorage.getItem("TASK"));
+  }
+  renderTask(taskService.arrTask);
+};
+const setLocalTasKComplete = (arrTaskComplete) => {
+  localStorage.setItem("TaskComplete", JSON.stringify(arrTaskComplete));
+};
+const getLocalTaskComplete = () => {
+  if (localStorage.getItem("TaskComplete")) {
+    taskService.arrTaskComplete = JSON.parse(
+      localStorage.getItem("TaskComplete")
+    );
+  }
+  renderTaskComplete(taskService.arrTaskComplete);
 };
 getLocalTask();
 getLocalTaskComplete();
